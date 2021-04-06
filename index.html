@@ -112,6 +112,15 @@
     -->
     <p>{{ lessThanThree }}</p>
 
+
+    <!-- Watch
+      値が変わるタイミングをみる
+      computedと似ている、基本はcomputedを使用するが庇いきれない部分を使用する
+      特定の処理をしたい時に使う
+    -->
+    <p>{{counter}}</p>
+    <button @click="counter += 1">上がる</button>
+    <p> {{ lessThanThree }} </p>
   </div>
 </body>
 <script src="js/vue.js"></script>

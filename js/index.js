@@ -1,8 +1,8 @@
 // vueインスタンスの宣言
 new Vue({
-  // ターゲットの宣言 IDがappに対してvueを使用 elはエレメント
+  // -------------ターゲットの宣言 IDがappに対してvueを使用 elはエレメント-------------
   el: '#app',
-  // いかにいろんなオブジェクトを記載できる
+  // -------------いかにいろんなオブジェクトを記載できる-------------
   data: {
     message: "HelloWorld",
     number: 0,
@@ -30,7 +30,7 @@ new Vue({
     // データは動的なものを扱うことはできな あくまで初期値
     counter: 0,
   },
-  // 動的なプロパティを扱いたい場合はcomputed:を使用して関数化する
+  // -------------動的なプロパティを扱いたい場合はcomputed:を使用して関数化する-------------
   computed: {
     // 関数作成
     lessThanThree: function(){
@@ -38,7 +38,19 @@ new Vue({
       return this.counter > 3 ? "さんより上" : "さんよりした"
     }
   },
-  // メソッド作成
+  // -------------------------- watch --------------------------
+  // 非同期の処理を書くことが多い returnを書くことができる
+  watch: {
+    counter: function(){
+      // // thisは使えないので変数に一旦入れる
+      let vm =  this;
+      // 3秒後にcounterを0にする
+      setTimeout(function(){
+        vm.counter = 0
+      }, 3000)
+    }
+  },
+  // -------------メソッド作成-------------
   methods: {
     reverseMessage: function(){
       // this.messageはdataの中のmessageオブジェクトにアクセスする
