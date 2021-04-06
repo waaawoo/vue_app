@@ -19,6 +19,17 @@
     -->
     <p v-else-if="maybeOk">maybe Ok</p>
     <p v-else>Not Ok</p>
+
+    <!-- templateタグはグループ化するときに使える(要素として存在しない)   divタグで書いても問題ないが要素として存在してしまう -->
+    <template v-if="ok">
+      <p>Hello</p>
+      <p>Good bay</p>
+      <p>おはよう</p>
+    </template>
+    <button @click="ok = !ok">反転</button>
+
+
+
   </div>
 
   <!-- jsの読み込み -->
