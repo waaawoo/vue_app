@@ -28,7 +28,22 @@
     </template>
     <button @click="ok = !ok">反転</button>
 
+    <!-- v-showディレクティブはcssのdisplay noneの状態になる
+      templateタグを使用できない
+      v-elseのような挙動はできない
 
+      v-show
+      使い所:
+      悪いところ:初期描画が遅い
+
+      v-if
+      悪いところ
+      buttonの切り替えなどが遅い
+
+      切り替えが多いところはv-show
+      初期描画からあまり変わらないところはv-fi
+    -->
+    <p v-show="ok">show</p>
 
   </div>
 
