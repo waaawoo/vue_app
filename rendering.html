@@ -58,6 +58,36 @@
       <li v-for="(key, value) in object">  {{value}}  {{key}}</li>
     </ul>
 
+    <!-- hrタグを使用する際,liの下に記載すると狙った挙動にならないため
+      以下のようにテンプレートで囲むと下線が引ける
+    -->
+    <ul>
+      <template v-for="fruit in fruits">
+        <li> {{fruit}} </li>
+        <hr>
+      </template>
+    </ul>
+
+    <!-- 正数値をレンダリングすることもできる -->
+    <ul>
+      <li v-for="n in 10"> {{n}} </li>
+    </ul>
+
+    <!-- v-forのinはofに変えることもできるのでどちらの書き方も問題ない 一般的なのはofになる -->
+    <!-- v-forはキー属性を指定する
+        要素の移動を最小限に抑えようとする性質がある
+        要素を削除するメソッドを読んだところ、input要素が残ってしまう
+        keyを指定すると紐付けができるようになる(templateタグにはkey属性をしてしても狙ったけかは得られない)
+        v-forを使用する場合はkey属性を必ず指定するようにする
+    -->
+    <ul>
+      <div v-for="fruit in fruits" :key="fruit">
+        <p> {{fruit}} </p>
+        <input type="text">
+      </div>
+    </ul>
+    <!-- 先頭を削除するメソッドを呼ぶ -->
+    <button @click="remove">先頭を削除</button>
 
   </div>
 

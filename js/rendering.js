@@ -15,6 +15,12 @@ new Vue({
       age: 21
     },
 
+  },
+  methods: {
+    remove: function(){
+      // 先頭削除する
+      this.fruits.shift();
+    }
   }
 
 })
