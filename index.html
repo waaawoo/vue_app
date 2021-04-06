@@ -136,7 +136,12 @@
 
      <!-- クラスを動的に配列で渡す -->
      <h1 :class="[color, bg]">配列で渡す</h1>
-     <!-- インラインスタイルのバインディング -->
+     <!-- インラインスタイルのバインディング  vueと紐付ける 配列でかく,オブジェクトでかく -->
+     <!-- <h1 style="color:red; background-color:blue;"></h1> -->
+     <!-- オブジェクトを渡す -->
+     <h1 :style="styleObject">インラインバイティング</h1>
+     <!-- 複数のスタイルオブジェクト適応させる際に配列を使う -->
+     <h1 :style="[baseStyles, styleObject]">複数のインラインオブジェクトを使用する</h1>
   </div>
 </body>
 <script src="js/vue.js"></script>

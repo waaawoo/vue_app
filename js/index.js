@@ -33,6 +33,17 @@ new Vue({
     isActive: true,
     color: "red",
     bg: "bg-blue",
+    // textColor: "red",
+    // bgColor: "blue",
+    // オブジェクトをdataへ格納する方法もある こっちの方がポピュラー
+    styleObject: {
+      color: 'red',
+      'background-color': "blue"
+    },
+    // 複数のスタイルオブジェクト適応させる際に配列を使う
+    baseStyles: {
+      fontSize: "60px"
+    }
   },
   // -------------動的なプロパティを扱いたい場合はcomputed:を使用して関数化する-------------
   computed: {
