@@ -8,16 +8,44 @@
 </head>
 <body>
   <div id="app">
-    <!-- {{}}二十の中かっこのなかにdataで指定したkeyを記載するとバリューが取れる -->
-    <p>{{message}}</p>
+    <!-- {{}}二重の中括弧のなかにdataで指定したkeyを記載するとバリューが取れる -->
+    <!-- v-onceは1度だけ描画させる、後の処理で値が変わってもここは変わらないようにする -->
+    <p v-once>{{message}}</p>
+    <!-- jsの構文をそのまま記載できる -->
+    <p> {{number + 5}} </p>
+    <!-- 三項演算子もかける -->
+    <p> {{ok ? 'YES' : 'NO'}} </p>
+    <!-- メソッドを呼べる -->
+    <p>{{ sayHi() }}</p>
 
     <!-- ボタンを押すとメッセージが反転する機能 -->
     <!--
-      v-on vue.jsが持つ特別な記述
+      v-on vue.jsが持つ特別な記述 ディレクティブ v-がつくもの
       click DOMイベント
       DOMイベントに使用するメソッドを指定（jsファイルにメソッドを作成する）
      -->
     <button v-on:click="reverseMessage" >メッセージ反転</button>
+
+    <!-- ディレクティブはvue.jsの特別なメソッド v-の記述で記載する vueのデータにアクセスできる -->
+    <p v-text = "message"></p>
+
+    <!-- v-htmlはHTML要素をそのまま表示に反映させるティレクティブ  -->
+    <!-- これだとそのまま文字として出力 -->
+    <div> {{html}} </div>
+    <!--
+      v-htmlを使う場合クロスサイトスクリプティングの危険性があるので注意が必要
+      ユーザーからの情報は入れ込まない
+     -->
+    <!-- vーhtmlを使うとHTMLの表記になる -->
+    <div v-html="html"></div>
+
+     <!-- v-bind urlを記載する場合 引数をとる:の後に属性を記載する -->
+     <a v-bind:href="url">google</a>
+     <!-- 省略も可能 v-bindを記載せずに :hrefという書き方もできる -->
+     <a :[attribute]="url">google省略記法</a>
+     <!-- 動的に情報を生成したい場合 vueの情報を渡してあげるv-bindでオブジェクトにまとめらる -->
+     <!-- <a :href="urlTwitter" :id="number">ツイッターへ</a> -->
+     <a v-bind="twitterObject">ツイッターへ</a>
   </div>
 </body>
 <script src="js/vue.js"></script>
