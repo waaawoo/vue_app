@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
   <title>Document</title>
 </head>
 <body>
@@ -121,6 +122,21 @@
     <p>{{counter}}</p>
     <button @click="counter += 1">上がる</button>
     <p> {{ lessThanThree }} </p>
+
+    <!-- 動的にスタイルを指定 クラスをデータにバインディング -->
+    <!--
+      v-bindでオブジェクト形式で渡す
+     -->
+     <h1 :class="{red: isActive,'bg-blue': !isActive}">クラスをバインディングするよ</h1>
+     <button @click="isActive = !isActive">切り替え</button>
+
+    <!-- computedを使うパターン -->
+    <h1 :class="classObject">クラスをバインディングするよ</h1>
+    <button @click="isActive = !isActive">切り替え</button>
+
+     <!-- クラスを動的に配列で渡す -->
+     <h1 :class="[color, bg]">配列で渡す</h1>
+     <!-- インラインスタイルのバインディング -->
   </div>
 </body>
 <script src="js/vue.js"></script>

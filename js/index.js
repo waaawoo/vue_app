@@ -29,6 +29,10 @@ new Vue({
 
     // データは動的なものを扱うことはできな あくまで初期値
     counter: 0,
+    // スタイルの判定用
+    isActive: true,
+    color: "red",
+    bg: "bg-blue",
   },
   // -------------動的なプロパティを扱いたい場合はcomputed:を使用して関数化する-------------
   computed: {
@@ -36,6 +40,13 @@ new Vue({
     lessThanThree: function(){
       // リターンする必要がある
       return this.counter > 3 ? "さんより上" : "さんよりした"
+    },
+    // クラスの付け替えを動的に行う
+    classObject: function(){
+      return{
+        red: !this.isActive,
+        'bg-blue': this.isActive
+      }
     }
   },
   // -------------------------- watch --------------------------
