@@ -8,16 +8,81 @@
 </head>
 <body>
   <div id="app">
-    <!-- {{}}二十の中かっこのなかにdataで指定したkeyを記載するとバリューが取れる -->
-    <p>{{message}}</p>
+    <!-- {{}}二重の中括弧のなかにdataで指定したkeyを記載するとバリューが取れる -->
+    <!-- v-onceは1度だけ描画させる、後の処理で値が変わってもここは変わらないようにする -->
+    <p v-once>{{message}}</p>
+    <!-- jsの構文をそのまま記載できる -->
+    <p> {{number + 5}} </p>
+    <!-- 三項演算子もかける -->
+    <p> {{ok ? 'YES' : 'NO'}} </p>
+    <!-- メソッドを呼べる -->
+    <p>{{ sayHi() }}</p>
 
     <!-- ボタンを押すとメッセージが反転する機能 -->
     <!--
-      v-on vue.jsが持つ特別な記述
+      v-on vue.jsが持つ特別な記述 ディレクティブ v-がつくもの
       click DOMイベント
       DOMイベントに使用するメソッドを指定（jsファイルにメソッドを作成する）
      -->
     <button v-on:click="reverseMessage" >メッセージ反転</button>
+
+    <!-- ディレクティブはvue.jsの特別なメソッド v-の記述で記載する vueのデータにアクセスできる -->
+    <p v-text = "message"></p>
+
+    <!-- v-htmlはHTML要素をそのまま表示に反映させるティレクティブ  -->
+    <!-- これだとそのまま文字として出力 -->
+    <div> {{html}} </div>
+    <!--
+      v-htmlを使う場合クロスサイトスクリプティングの危険性があるので注意が必要
+      ユーザーからの情報は入れ込まない
+     -->
+    <!-- vーhtmlを使うとHTMLの表記になる -->
+    <div v-html="html"></div>
+
+     <!-- v-bind urlを記載する場合 引数をとる:の後に属性を記載する -->
+     <a v-bind:href="url">google</a>
+     <!-- 省略も可能 v-bindを記載せずに :hrefという書き方もできる -->
+     <a :[attribute]="url">google省略記法</a>
+     <!-- 動的に情報を生成したい場合 vueの情報を渡してあげるv-bindでオブジェクトにまとめらる -->
+     <!-- <a :href="urlTwitter" :id="number">ツイッターへ</a> -->
+     <a v-bind="twitterObject">ツイッターへ</a>
+
+     <!-- v-onディレクティブ DOMイベント カウントアップ関数を作る 引数にDOMイベントを記載 -->
+     <p>現在{{number}}回クリックされています</p>
+     <button v-on:click="clickCountUp">カウントアップ</button>
+
+     <!-- イベントオブジェクトの取得 mousemoveイベントは要素に乗っている間ずっと発火するイベント -->
+     <p v-on:mousemove="changeMouse">マウスを載せてください</p>
+     <p>X:{{x}}, Y:{{y}}</p>
+
+     <!-- 引数倍カウントアップ -->
+     <p>現在{{number2}}回クリックされています</p>
+     <button v-on:click="clickCountUp2(2)">カウントアップ</button>
+
+     <!-- イベント修飾子 -->
+     <!--
+        vue.jsが提供しているまず記載してイベントの処理をするような記載をv-on側で記載できるもの
+        一般的なものはstop prevent
+        stop.Propagationをv-on:イベント.stopで止めれる
+        preventは
+      -->
+      <p v-on:mousemove="changeMouse2">マウスを載せてください2
+        <span v-on:mousemove.stop>反応しないでください</span>
+      </p>
+     <p>X2:{{x2}}, Y2:{{y2}}</p>
+     <!-- preventは挙動を妨げる（デフォルトの挙動を妨げる） -->
+     <a v-on:click.prevent href="#">無効</a>
+
+     <!-- キー修飾子
+      キーボードに対する修飾し
+      v-on:keyup キーをはなした時
+      .enter enterを押したら反応する
+      .space スペースを押すと
+      つなげることができる
+    -->
+    <input type="text" v-on:keyup.enter.space="myAlert">
+    <!-- v-onは＠マークで省略できる v-on:keyup == @keyupは同義 -->
+    <input type="text" @keyup="myAlert">
   </div>
 </body>
 <script src="js/vue.js"></script>
