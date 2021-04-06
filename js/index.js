@@ -25,8 +25,18 @@ new Vue({
     y2: 0,
     // カウントアップ
     number2: 0,
+    message_change: "変えられるよ",
 
-
+    // データは動的なものを扱うことはできな あくまで初期値
+    counter: 0,
+  },
+  // 動的なプロパティを扱いたい場合はcomputed:を使用して関数化する
+  computed: {
+    // 関数作成
+    lessThanThree: function(){
+      // リターンする必要がある
+      return this.counter > 3 ? "さんより上" : "さんよりした"
+    }
   },
   // メソッド作成
   methods: {
@@ -37,7 +47,7 @@ new Vue({
     sayHi: function(){
       // 自分のオブジェクトを返したい場合thisを記載する（インスタンスないでデータを扱いたい場合）
       this.message = "HelloVueJS";
-      return this.message;
+      return this.message
     },
     // カウントアップ関数
     clickCountUp: function(){
