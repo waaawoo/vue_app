@@ -5,5 +5,12 @@ new Vue({
   // いかにいろんなオブジェクトを記載できる
   data: {
     message: "HelloWorld"
+  },
+  // メソッド作成
+  methods: {
+    reverseMessage: function(){
+      // this.messageはdataの中のmessageオブジェクトにアクセスする
+      this.message = this.message.split('').reverse().join('')
+    }
   }
 })
