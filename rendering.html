@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レンダリング</title>
+</head>
+<body>
+  <!-- 条件付きレンダリング -->
+  <div id="app">
+    <!-- v-if
+      v-ifは条件付きでレンダリングさせるもの
+      dataのokがtrueかfalseを判定する
+    -->
+    <p v-if="ok">OK!</p>
+    <!-- v-else でelseを表記できる
+      v-elseはv-if v-else-ifのすぐ下に設定する必要がある
+    -->
+    <p v-else-if="maybeOk">maybe Ok</p>
+    <p v-else>Not Ok</p>
+  </div>
+
+  <!-- jsの読み込み -->
+  <script src="js/vue.js"></script>
+  <script src="js/rendering.js"></script>
+</body>
+</html>
