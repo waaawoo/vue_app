@@ -21,6 +21,8 @@ new Vue({
     // マウスのx軸y軸
     x: 0,
     y: 0,
+    x2: 0,
+    y2: 0,
     // カウントアップ
     number2: 0
 
@@ -46,8 +48,18 @@ new Vue({
       this.x = e.clientX;
       this.y = e.clientY;
     },
+    changeMouse2: function(e){
+      this.x2 = e.clientX;
+      this.y2 = e.clientY;
+    },
     clickCountUp2: function(num) {
       this.number2 += 1 * num;
+    },
+    noEvent: function(event){
+      // stopPropagationはバブリングをさせない
+      // 両方イベント発火しないようにする
+      // event.stopPropagation() → v-onに.stopで同様の効果がある
+
     }
   }
 })

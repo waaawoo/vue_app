@@ -58,6 +58,22 @@
      <!-- 引数倍カウントアップ -->
      <p>現在{{number2}}回クリックされています</p>
      <button v-on:click="clickCountUp2(2)">カウントアップ</button>
+
+     <!-- イベント修飾子 -->
+     <!--
+        vue.jsが提供しているまず記載してイベントの処理をするような記載をv-on側で記載できるもの
+        一般的なものはstop prevent
+        stop.Propagationをv-on:イベント.stopで止めれる
+        preventは
+      -->
+      <p v-on:mousemove="changeMouse2">マウスを載せてください2
+        <span v-on:mousemove.stop>反応しないでください</span>
+      </p>
+     <p>X2:{{x2}}, Y2:{{y2}}</p>
+     <!-- preventは挙動を妨げる（デフォルトの挙動を妨げる） -->
+     <a v-on:click.prevent href="#">無効</a>
+     <!-- k -->
+
   </div>
 </body>
 <script src="js/vue.js"></script>
