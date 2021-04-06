@@ -24,7 +24,8 @@ new Vue({
     x2: 0,
     y2: 0,
     // カウントアップ
-    number2: 0
+    number2: 0,
+
 
   },
   // メソッド作成
@@ -60,6 +61,9 @@ new Vue({
       // 両方イベント発火しないようにする
       // event.stopPropagation() → v-onに.stopで同様の効果がある
 
+    },
+    myAlert: function(){
+      alert("アラート");
     }
   }
 })

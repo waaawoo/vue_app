@@ -72,8 +72,17 @@
      <p>X2:{{x2}}, Y2:{{y2}}</p>
      <!-- preventは挙動を妨げる（デフォルトの挙動を妨げる） -->
      <a v-on:click.prevent href="#">無効</a>
-     <!-- k -->
 
+     <!-- キー修飾子
+      キーボードに対する修飾し
+      v-on:keyup キーをはなした時
+      .enter enterを押したら反応する
+      .space スペースを押すと
+      つなげることができる
+    -->
+    <input type="text" v-on:keyup.enter.space="myAlert">
+    <!-- v-onは＠マークで省略できる v-on:keyup == @keyupは同義 -->
+    <input type="text" @keyup="myAlert">
   </div>
 </body>
 <script src="js/vue.js"></script>
