@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レンダリング</title>
+</head>
+<body>
+  <!-- 条件付きレンダリング -->
+  <div id="app">
+    <!-- v-if
+      v-ifは条件付きでレンダリングさせるもの
+      dataのokがtrueかfalseを判定する
+    -->
+    <p v-if="ok">OK!</p>
+    <!-- v-else でelseを表記できる
+      v-elseはv-if v-else-ifのすぐ下に設定する必要がある
+    -->
+    <p v-else-if="maybeOk">maybe Ok</p>
+    <p v-else>Not Ok</p>
+
+    <!-- templateタグはグループ化するときに使える(要素として存在しない)   divタグで書いても問題ないが要素として存在してしまう -->
+    <template v-if="ok">
+      <p>Hello</p>
+      <p>Good bay</p>
+      <p>おはよう</p>
+    </template>
+    <button @click="ok = !ok">反転</button>
+
+    <!-- v-showディレクティブはcssのdisplay noneの状態になる
+      templateタグを使用できない
+      v-elseのような挙動はできない
+
+      v-show
+      使い所:
+      悪いところ:初期描画が遅い
+
+      v-if
+      悪いところ
+      buttonの切り替えなどが遅い
+
+      切り替えが多いところはv-show
+      初期描画からあまり変わらないところはv-fi
+    -->
+    <p v-show="ok">show</p>
+
+    <!-- 配列のレンダリング方法 リスト v-for="変数 in 配列" -->
+    <!-- (fruit, index) in fruits 第二引数をとることができる -->
+    <ul>
+      <li v-for="fruit, index in fruits"> ({{index}}) {{fruit}} </li>
+    </ul>
+
+    <!-- オブジェクトのレンダリング方法 valueをとってくる -->
+    <!-- 順番は保証されない -->
+    <!-- 引数の第二引数はkeyをとる -->
+    <ul>
+      <li v-for="(key, value) in object">  {{value}}  {{key}}</li>
+    </ul>
+
+    <!-- hrタグを使用する際,liの下に記載すると狙った挙動にならないため
+      以下のようにテンプレートで囲むと下線が引ける
+    -->
+    <ul>
+      <template v-for="fruit in fruits">
+        <li> {{fruit}} </li>
+        <hr>
+      </template>
+    </ul>
+
+    <!-- 正数値をレンダリングすることもできる -->
+    <ul>
+      <li v-for="n in 10"> {{n}} </li>
+    </ul>
+
+    <!-- v-forのinはofに変えることもできるのでどちらの書き方も問題ない 一般的なのはofになる -->
+    <!-- v-forはキー属性を指定する
+        要素の移動を最小限に抑えようとする性質がある
+        要素を削除するメソッドを読んだところ、input要素が残ってしまう
+        keyを指定すると紐付けができるようになる(templateタグにはkey属性をしてしても狙ったけかは得られない)
+        v-forを使用する場合はkey属性を必ず指定するようにする
+    -->
+    <ul>
+      <div v-for="fruit in fruits" :key="fruit">
+        <p> {{fruit}} </p>
+        <input type="text">
+      </div>
+    </ul>
+    <!-- 先頭を削除するメソッドを呼ぶ -->
+    <button @click="remove">先頭を削除</button>
+
+  </div>
+
+  <!-- jsの読み込み -->
+  <script src="js/vue.js"></script>
+  <script src="js/rendering.js"></script>
+</body>
+</html>
