@@ -46,6 +46,18 @@
      <!-- 動的に情報を生成したい場合 vueの情報を渡してあげるv-bindでオブジェクトにまとめらる -->
      <!-- <a :href="urlTwitter" :id="number">ツイッターへ</a> -->
      <a v-bind="twitterObject">ツイッターへ</a>
+
+     <!-- v-onディレクティブ DOMイベント カウントアップ関数を作る 引数にDOMイベントを記載 -->
+     <p>現在{{number}}回クリックされています</p>
+     <button v-on:click="clickCountUp">カウントアップ</button>
+
+     <!-- イベントオブジェクトの取得 mousemoveイベントは要素に乗っている間ずっと発火するイベント -->
+     <p v-on:mousemove="changeMouse">マウスを載せてください</p>
+     <p>X:{{x}}, Y:{{y}}</p>
+
+     <!-- 引数倍カウントアップ -->
+     <p>現在{{number2}}回クリックされています</p>
+     <button v-on:click="clickCountUp2(2)">カウントアップ</button>
   </div>
 </body>
 <script src="js/vue.js"></script>

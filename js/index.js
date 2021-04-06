@@ -5,7 +5,7 @@ new Vue({
   // いかにいろんなオブジェクトを記載できる
   data: {
     message: "HelloWorld",
-    number: 3,
+    number: 0,
     ok: true,
     html: "<h1>h１です</h1>",
     url: "https://google.com",
@@ -16,7 +16,13 @@ new Vue({
     twitterObject: {
       href: "https://twitter.com",
       id: 31
-    }
+    },
+
+    // マウスのx軸y軸
+    x: 0,
+    y: 0,
+    // カウントアップ
+    number2: 0
 
   },
   // メソッド作成
@@ -29,6 +35,19 @@ new Vue({
       // 自分のオブジェクトを返したい場合thisを記載する（インスタンスないでデータを扱いたい場合）
       this.message = "HelloVueJS";
       return this.message;
+    },
+    // カウントアップ関数
+    clickCountUp: function(){
+      return this.number += 1;
+    },
+
+    // eventを引数におくとイベントオブジェクトを取れる eventオブジェクトの中のclientから情報を取得する
+    changeMouse: function(e){
+      this.x = e.clientX;
+      this.y = e.clientY;
+    },
+    clickCountUp2: function(num) {
+      this.number2 += 1 * num;
     }
   }
 })
