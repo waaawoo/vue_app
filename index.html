@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
   <title>Document</title>
 </head>
 <body>
@@ -83,6 +84,64 @@
     <input type="text" v-on:keyup.enter.space="myAlert">
     <!-- v-onは＠マークで省略できる v-on:keyup == @keyupは同義 -->
     <input type="text" @keyup="myAlert">
+
+    <!-- v-modelは双方向データバインティング
+        双方向でデータが変更可能
+        inputで入力するとmessage_changeが変更できる
+        v-modelは双方から変更を可能にしてくれる
+    -->
+    <div>
+      <input type="text" v-model="message_change">
+      <h1>{{message_change}}</h1>
+    </div>
+
+    <!-- コンピューテットプロパティ
+      動的なプロパティを使いたい時
+    -->
+    <p>{{counter}}</p>
+    <button @click="counter += 1">+1</button>
+    <!-- 三項演算子をプロパティで表現 -->
+    <!-- <p>{{ counter > 3 ? "3より上" : "3よりした" }}</p> -->
+    <!-- computedプロパティを使用して実現 メソッドでも同様のことを実現が可能
+      computedと
+      methodの違い
+      メソッドがいつ実行されているか -> {{}}の中のメソッドはテンプレートの中身が変わり、
+      再描画されたタイミングで実行される
+      無駄な処理が実行されてしまう
+      computedプロパティは
+      参照先(this.counter)が変わるタイミングで実行される
+    -->
+    <p>{{ lessThanThree }}</p>
+
+
+    <!-- Watch
+      値が変わるタイミングをみる
+      computedと似ている、基本はcomputedを使用するが庇いきれない部分を使用する
+      特定の処理をしたい時に使う
+    -->
+    <p>{{counter}}</p>
+    <button @click="counter += 1">上がる</button>
+    <p> {{ lessThanThree }} </p>
+
+    <!-- 動的にスタイルを指定 クラスをデータにバインディング -->
+    <!--
+      v-bindでオブジェクト形式で渡す
+     -->
+     <h1 :class="{red: isActive,'bg-blue': !isActive}">クラスをバインディングするよ</h1>
+     <button @click="isActive = !isActive">切り替え</button>
+
+    <!-- computedを使うパターン -->
+    <h1 :class="classObject">クラスをバインディングするよ</h1>
+    <button @click="isActive = !isActive">切り替え</button>
+
+     <!-- クラスを動的に配列で渡す -->
+     <h1 :class="[color, bg]">配列で渡す</h1>
+     <!-- インラインスタイルのバインディング  vueと紐付ける 配列でかく,オブジェクトでかく -->
+     <!-- <h1 style="color:red; background-color:blue;"></h1> -->
+     <!-- オブジェクトを渡す -->
+     <h1 :style="styleObject">インラインバイティング</h1>
+     <!-- 複数のスタイルオブジェクト適応させる際に配列を使う -->
+     <h1 :style="[baseStyles, styleObject]">複数のインラインオブジェクトを使用する</h1>
   </div>
 </body>
 <script src="js/vue.js"></script>
