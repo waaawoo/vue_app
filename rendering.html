@@ -45,6 +45,20 @@
     -->
     <p v-show="ok">show</p>
 
+    <!-- 配列のレンダリング方法 リスト v-for="変数 in 配列" -->
+    <!-- (fruit, index) in fruits 第二引数をとることができる -->
+    <ul>
+      <li v-for="fruit, index in fruits"> ({{index}}) {{fruit}} </li>
+    </ul>
+
+    <!-- オブジェクトのレンダリング方法 valueをとってくる -->
+    <!-- 順番は保証されない -->
+    <!-- 引数の第二引数はkeyをとる -->
+    <ul>
+      <li v-for="(key, value) in object">  {{value}}  {{key}}</li>
+    </ul>
+
+
   </div>
 
   <!-- jsの読み込み -->
