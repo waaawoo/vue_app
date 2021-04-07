@@ -53,3 +53,19 @@ let vm2 = new Vue({
 // console.log(data === vm2.$data);
 // $mountメソッドはelプロパティを後付けできる
 vm1.$mount('#app2')
+
+// テンプレートプロパティ
+new Vue({
+  el: "#temp",
+  data: {
+    name: "テンプレートプロパティ",
+  },
+  // templateに記載すると、このまま表示される
+  template: "<p>こんにちは{{name}}</p>"
+})//.$moutn($temp)とかく表示できる
+
+// レンダー関数
+new Vue({
+  el: "#render",
+
+})
