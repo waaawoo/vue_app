@@ -38,9 +38,18 @@ let vm2 = new Vue({
       // vm１側のデータを変更できる
       vm1.message = "インスタンス2から変えました";
     },
+  },
+  computed: {
+    myData: function(){
+      // 自分の情報を外に参照させるときはthisを使う
+      return this.$data;
+    }
   }
+
 })
 
 // vueインスタンスのデータを全て見たい場合は$dataをする
-console.log(vm2.$data);
-console.log(data === vm2.$data);
+// console.log(vm2.$data);
+// console.log(data === vm2.$data);
+// $mountメソッドはelプロパティを後付けできる
+vm1.$mount('#app2')
