@@ -66,6 +66,15 @@ new Vue({
 
 // レンダー関数
 new Vue({
-  el: "#render",
+  data: {
+    name: "レンダー",
+  },
+  // レンダー関数 DOM要素ではない vnode(仮想ノード) jsの要素を作っているだけ
+  render: function(createElement){
+    // 第一引数にタグ、第二引数に表示を記載する
+    return createElement('h1', `名前は${this.name}`);
+  }
+}).$mount("#render")
 
-})
+// ドキュメントとはブラウザがHTMLを受け取って、ツリー型のオブジェクトにしている
+// document.createElement
