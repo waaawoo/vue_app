@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンポーネントについて</title>
+</head>
+<body>
+
+  <!-- vueインスタンスでクラス指定したものを複数では出せない -->
+  <!-- 一番最初にレンダリングされたもの以降は無視される -->
+  <div id="" class="hello">
+    <p> {{name}} </p>
+    <!-- 登録したコンポーネントを使用する -->
+    <hello></hello>
+    <hello></hello>
+
+  </div>
+
+
+  <script src="js/vue.js"></script>
+  <script src="js/component.js"></script>
+</body>
+</html>
