@@ -78,3 +78,42 @@ new Vue({
 
 // ドキュメントとはブラウザがHTMLを受け取って、ツリー型のオブジェクトにしている
 // document.createElement
+
+
+// ライフサイクルできさい
+new Vue({
+  el: "#life",
+  data: {
+    name: "ライフ",
+  },
+  beforeCreate: function(){
+    console.log("beforeCreate");
+  },
+  created: function(){
+    console.log("created");
+  },
+  beforeMount: function(){
+    console.log("beforeMount");
+  },
+  mounted: function(){
+    console.log("mounted");
+  },
+  beforeUpdate: function(){
+    console.log("beforeUpdate");
+  },
+  updated: function(){
+    console.log("updated");
+  },
+  beforeDestroy: function(){
+    console.log("beforeDestroy");
+  },
+  destroyed: function(){
+    console.log("destroyed");
+  },
+  methods: {
+    destroy: function(){
+      // vueインスタンスを破棄する(ロジックを実行することができなくなる)
+      this.$destroy()
+    }
+  }
+})

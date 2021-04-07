@@ -31,6 +31,12 @@
 
   <div id="render"></div>
 
+  <div id="life">
+    <h1>こんにちは {{name}} </h1>
+    <button @click="name='太郎'">名前を変更</button>
+    <button @click="destroy">インスタンスを破壊</button>
+  </div>
+
 
   <script src="js/vue.js"></script>
   <script src="js/instance.js"></script>

@@ -15,3 +15,16 @@ jsで仮想DOMを作り、前回との差分を変更させる
 jsスクリプトオブジェクトを持っておいて、前回の仮想DOMと見比べて変化させる
 
 vue.jsは仮想DOMを作り、効率よく差分を反映させてくれる
+
+vueインスタンスライフサイクル
+
+1 new Vue()           beforeCreate()
+2 インスタンスが作られる  created()
+3 elプロパティがあるか    templateをrender関数にコンパイル
+3 elプロパティがない場合   $.mount()が呼ばれたらrender関数にコンパイル
+4 $elを作って実際にDOMに追加  beforeMount()
+5 Mounted 仮想DOMからDOMに反映
+6 データが変わったら、再描画 beforeUpdate() 再描画手前
+7 updated()
+8 Destroyed
+
