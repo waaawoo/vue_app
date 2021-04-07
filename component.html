@@ -10,14 +10,19 @@
 
   <!-- vueインスタンスでクラス指定したものを複数では出せない -->
   <!-- 一番最初にレンダリングされたもの以降は無視される -->
-  <div id="" class="hello">
-    <p> {{name}} </p>
+  <div class="hello">
+    <!-- <p> {{name}} </p> -->
     <!-- 登録したコンポーネントを使用する -->
-    <hello></hello>
-    <hello></hello>
-
+    <!-- <hello></hello>
+    <hello></hello> -->
+    <!-- コンポーネントをタグで取ると出力できる -->
+  <my-component></my-component>
   </div>
+  <hr>
 
+  <div class="app">
+    <my-component></my-component>
+  </div>
 
   <script src="js/vue.js"></script>
   <script src="js/component.js"></script>
