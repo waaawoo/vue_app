@@ -28,3 +28,19 @@ vueインスタンスライフサイクル
 7 updated()
 8 Destroyed
 
+実践的な開発を作る上で必要な機能
+ Vue CLI
+ 必要な理由
+  ファイルの分割
+  最終的なコードの軽量化
+  babel TypeScript ESLintなどのPluginの使用
+  HMR(Hot Module Replacement)コードの差分を自動で変えてくれる
+  .vue TS Scss Pug ES6 などの使用
+
+インストール方法
+ npm ノードパッケージマネージャーを使う
+npm install -g @vue/cli でインストールする -gはグローバルインストール
+
+paobaoはNoで良い
+vueのバージョンは2を選択
+yarnかnpmはどちらでも良い
