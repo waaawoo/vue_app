@@ -15,16 +15,24 @@ let vm1 = new Vue({
 // 外部で設定したものはgetter、setterがないため、リアクティブな処理を行うことができない
 vm1.message = "変えました"
 vm1.name = "名前"
-console.log(vm1);
+// console.log(vm1);
 // インスタンスを変数に入れたものデータを変えられる
-// vm1.message = "書き換えられました";
+vm1.message = "書き換えられました";
+
+
+// ユーザー定義のプロパティやメソッドは$がついてる
+// $dataは定義した情報が入ってくる
+// vue.jsは外部のデータを参照することができる
+let data = {
+  message: "外部",
+  name: "外部"
+}
+
 
 // id2用
 let vm2 = new Vue({
   el: "#instance2",
-  data: {
-    message: "インスタンス2",
-  },
+  data: data,
   methods: {
     changeMessage1: function(){
       // vm１側のデータを変更できる
@@ -33,3 +41,6 @@ let vm2 = new Vue({
   }
 })
 
+// vueインスタンスのデータを全て見たい場合は$dataをする
+console.log(vm2.$data);
+console.log(data === vm2.$data);
